@@ -1,0 +1,340 @@
+
+1. create a class called Product
+   attributes prod_id, name, prod_type - which is either A or B or C
+   hold the cost price of the product 
+   have a method called calc_selling_price which computes the SP in the following way
+   'A' type  then SP = cost price + cost price * 10% profit percentage
+   'B' type  then SP = cost price + cost price * 12.5% profit percentage
+   'C' type  then SP = cost price + cost price * 15.5% profit percentage
+
+   have a display method to print the info
+
+===============================================================================================
+
+INPUT:
+
+class product:
+    
+    def __init__(self,prod_id,name,prod_type):
+        
+        self.product_id = prod_id
+        self.name = name
+        self.product_type = prod_type
+        self.sp = 0
+    
+    def calc_selling_price(self):
+        
+        c_price = int(input('please enter the cost of the product :'))
+        print()
+        
+        if self.product_type == 'A':
+            self.sp = c_price + c_price * 10/100
+            
+        elif self.product_type == 'B':
+            self.sp = c_price + c_price * 12.5/100
+             
+        elif self.product_type == 'C':
+            self.sp = c_price + c_price * 15.5/100
+        
+        else:
+            self.sp = c_price 
+        
+            
+    def display(self):
+        
+        print('THE SELLING PRICE OF THE PRODUCT TYPE',self.product_type,'IS :',self.sp)
+        print()
+        
+print('<========== MAIN BLOCK STARTS HEAR ==========>')
+print()
+
+p_id = int(input('enter the product id [501, 502, 503, 504] :'))
+print()
+p_name = input('enter the product name :')
+print()
+p_type = input('enter the product type [A, B, C, or other alphabets ] :')
+print()
+p = product(p_id,p_name,p_type)
+p.calc_selling_price()
+p.display()
+
+print('<========== MAIN BLOCK ENDS HEAR ==========>')
+
+===============================================================================================
+
+OUTPUT-1
+
+<========== MAIN BLOCK STARTS HEAR ==========>
+
+enter the product id [501, 502, 503, 504] :504
+
+enter the product name :LAPTOP
+
+enter the product type [A, B, C, or other alphabets ] :C
+
+please enter the cost of the product :50000
+
+THE SELLING PRICE OF THE PRODUCT TYPE C IS : 57750.0
+
+<========== MAIN BLOCK ENDS HEAR ==========>
+
+OUTPUT-2
+
+<========== MAIN BLOCK STARTS HEAR ==========>
+
+enter the product id [501, 502, 503, 504] :503
+
+enter the product name :MOBILE PHONE
+
+enter the product type [A, B, C, or other alphabets ] :D
+
+please enter the cost of the product :25000
+
+THE SELLING PRICE OF THE PRODUCT TYPE D IS : 25000
+
+<========== MAIN BLOCK ENDS HEAR ==========>
+
+===============================================================================================
+
+2. once 1 is working add a attribute called surcharge
+   the surcharge is Rs 25 for A type to be added to the SP
+   the surcharge is Rs 32 for B type to be added to the SP
+   no surcharge for C type
+
+===============================================================================================
+
+INPUT:
+
+class product:
+    
+    def __init__(self,prod_id,name,prod_type):
+        
+        self.product_id = prod_id
+        self.name = name
+        self.product_type = prod_type
+        self.sur_charge_A = 25
+        self.sur_charge_B = 32
+        self.sur_charge_C = 0
+        self.sp = 0
+    
+    def calc_selling_price(self):
+        
+        c_price = int(input('please enter the cost of the product :'))
+        print()
+        
+        if self.product_type == 'A':
+            self.sp = c_price + (c_price * 10/100) + self.sur_charge_A 
+            
+        elif self.product_type == 'B':
+            self.sp = c_price + (c_price * 12.5/100) + self.sur_charge_B 
+             
+        elif self.product_type == 'C':
+            self.sp = c_price + (c_price * 15.5/100) + self.sur_charge_C
+        
+        else:
+            self.sp = c_price 
+        
+            
+    def display(self):
+        
+        print('THE SELLING PRICE OF THE PRODUCT TYPE',self.product_type,'IS :',self.sp)
+        print()
+        
+print('<========== MAIN BLOCK STARTS HEAR ==========>')
+print()
+
+p_id = int(input('enter the product id [501, 502, 503, 504] :'))
+print()
+p_name = input('enter the product name :')
+print()
+p_type = input('enter the product type [A, B, C, or other alphabets ] :')
+print()
+p = product(p_id,p_name,p_type)
+p.calc_selling_price()
+p.display()
+
+print('<========== MAIN BLOCK ENDS HEAR ==========>')
+
+===============================================================================================
+
+OUTPUT-1:
+
+<========== MAIN BLOCK STARTS HEAR ==========>
+
+enter the product id [501, 502, 503, 504] :502
+
+enter the product name :LAPTOP
+
+enter the product type [A, B, C, or other alphabets ] :B
+
+please enter the cost of the product :50000
+
+THE SELLING PRICE OF THE PRODUCT TYPE B IS : 56282.0
+
+<========== MAIN BLOCK ENDS HEAR ==========>
+
+OUTPUT-2:
+
+enter the product id [501, 502, 503, 504] :502
+
+enter the product name :LAPTOP
+
+enter the product type [A, B, C, or other alphabets ] :C
+
+please enter the cost of the product :50000
+
+THE SELLING PRICE OF THE PRODUCT TYPE C IS : 57750.0
+
+<========== MAIN BLOCK ENDS HEAR ==========>
+
+===============================================================================================
+
+3. once 2 is working, use the for loop and create 5 objects and store it in list
+   iterate the list and display the details.
+   for example (HINT)
+   lst1 = []
+   for i in range(0,5):
+      obj1 = product(...)
+      lst1.append(obj1)
+   
+   for i in range(0,5):
+       obj1 = lst1[i]
+       obj1.display()
+
+===============================================================================================
+
+INPUT:
+
+
+class product:
+    
+    def __init__(self,prod_id,name,prod_type):
+        
+        self.product_id = prod_id
+        self.name = name
+        self.product_type = prod_type
+        self.sur_charge_A = 25
+        self.sur_charge_B = 32
+        self.sur_charge_C = 0
+        self.sp = 0
+    
+    def calc_selling_price(self):
+        
+        c_price = int(input('please enter the cost of the product :'))
+        print()
+        
+        if self.product_type == 'A':
+            self.sp = c_price + (c_price * 10/100) + self.sur_charge_A 
+            
+        elif self.product_type == 'B':
+            self.sp = c_price + (c_price * 12.5/100) + self.sur_charge_B 
+             
+        elif self.product_type == 'C':
+            self.sp = c_price + (c_price * 15.5/100) + self.sur_charge_C
+        
+        else:
+            self.sp = c_price 
+        
+            
+    def display(self):
+        
+        print('THE SELLING PRICE OF THE PRODUCT "',self.name,'" TYPE "',self.product_type,'" IS :',self.sp)
+        print()
+        
+print('<========== MAIN BLOCK STARTS HEAR ==========>')
+print()
+
+p_id = int(input('enter the product id [501, 502, 503, 504] :'))
+print()
+p_name = input('enter the product name :')
+print()
+p_type = input('enter the product type [A, B, C, or other alphabets ] :')
+print()
+p = product(p_id,p_name,p_type)
+p.calc_selling_price()
+p.display()
+
+p1 = product(100,'pen','A')
+p1.calc_selling_price()
+p1.display()
+
+p2 = product(200,'pencil','C')
+p2.calc_selling_price()
+p2.display()
+
+p3 = product(300,'sugar','B')
+p3.calc_selling_price()
+p3.display()
+
+p4 = product(400,'shirt','C')
+p4.calc_selling_price()
+p4.display()
+
+lst1 = []
+lst1.append(p)
+lst1.append(p1)
+lst1.append(p2)
+lst1.append(p3)
+lst1.append(p4)
+for i in lst1:
+    print(i)
+    print()
+
+for i in lst1:
+    i.display()
+    
+print('<========== MAIN BLOCK ENDS HEAR ==========>')
+
+===============================================================================================
+
+OUTPUT:
+
+<========== MAIN BLOCK STARTS HEAR ==========>
+
+enter the product id [501, 502, 503, 504] :502
+
+enter the product name :laptop
+
+enter the product type [A, B, C, or other alphabets ] :B
+
+please enter the cost of the product :50000
+
+THE SELLING PRICE OF THE PRODUCT " laptop " TYPE " B " IS : 56282.0
+
+please enter the cost of the product :10
+
+THE SELLING PRICE OF THE PRODUCT " pen " TYPE " A " IS : 36.0
+
+please enter the cost of the product :20
+
+THE SELLING PRICE OF THE PRODUCT " pencil " TYPE " C " IS : 23.1
+
+please enter the cost of the product :50
+
+THE SELLING PRICE OF THE PRODUCT " sugar " TYPE " B " IS : 88.25
+
+please enter the cost of the product :600
+
+THE SELLING PRICE OF THE PRODUCT " shirt " TYPE " C " IS : 693.0
+
+<__main__.product object at 0x000002BF7C7D1310>
+
+<__main__.product object at 0x000002BF7C7D1280>
+
+<__main__.product object at 0x000002BF7C7D13D0>
+
+<__main__.product object at 0x000002BF7C7D1430>
+
+<__main__.product object at 0x000002BF7C7D1580>
+
+THE SELLING PRICE OF THE PRODUCT " laptop " TYPE " B " IS : 56282.0
+
+THE SELLING PRICE OF THE PRODUCT " pen " TYPE " A " IS : 36.0
+
+THE SELLING PRICE OF THE PRODUCT " pencil " TYPE " C " IS : 23.1
+
+THE SELLING PRICE OF THE PRODUCT " sugar " TYPE " B " IS : 88.25
+
+THE SELLING PRICE OF THE PRODUCT " shirt " TYPE " C " IS : 693.0
+
+<========== MAIN BLOCK ENDS HEAR ==========>
